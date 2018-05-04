@@ -1,0 +1,20 @@
+{
+  "server":{
+    "port":80,
+    "servletPath":"webroot/servlet",
+    "staticPath":"webroot"
+  }
+  ,
+  "servlet":[
+    {
+      "name":"ModernServlet",
+      "class":"ModernServlet",
+      "mapping":"/servlet/ModernServlet"
+    },
+    {
+      "name":"priServlet",
+      "class":"PrimitiveServlet",
+      "mapping":"/servlet/pri"
+    }
+  ]
+}

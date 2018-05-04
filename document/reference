@@ -1,0 +1,74 @@
+           JSP Scripting Elements ( - means which has been finished)
+--------------------------------------------------
+      -  Expressions   <%= expression %>
+      -  Scriptlets    <% code%>
+      -  Declarations  <%! variables or methods %>
+         JSP directive <%@ page session="true" %>
+           - <%@ page contentType="MIME-Type;charset=Character-Set" %>
+           -  <%@ page import="java.util.*,coreservlets.*" %>
+            <%@ page contentType="text/plain" %>
+            <%@ page isThreadSafe="false" %>s
+            <%@ page session="false" %>
+            <%@ page buffer="sizekb" %>
+            <%@ page extends="package.class" %>
+            <%@ page errorPage="Relative URL" %>
+            <%@ page isErrorPage="true" %>
+
+        page directive
+        include directive
+        taglib directive
+
+        JSP standard action
+        <jsp:useBean>
+        <jsp:setProperty>
+        <jsp:getProperty>
+        <jsp:forward>
+        <jsp:include>
+        <jsp:param>
+        <jsp:plugparams>
+
+
+        request  object
+        response object
+        out object
+        session object
+        pageContext object
+        application object
+        page object
+        config object
+        exception object
+
+
+   /*
+   * import java.io.*;
+   import javax.servlet.*;
+   import javax.servlet.http.*;
+
+   // 扩展 HttpServlet 类
+   public class HelloWorld extends HttpServlet {
+
+     private String message;
+
+     public void init() throws ServletException
+     {
+         // 执行必需的初始化
+         message = "Hello World";
+     }
+
+     public void doGet(HttpServletRequest request,
+                       HttpServletResponse response)
+               throws ServletException, IOException
+     {
+         // 设置响应内容类型
+         response.setContentType("text/html");
+
+         // 实际的逻辑是在这里
+         PrintWriter out = response.getWriter();
+         out.println("<h1>" + message + "</h1>");
+     }
+
+     public void destroy()
+     {
+         // 什么也不做
+     }
+   }*/
