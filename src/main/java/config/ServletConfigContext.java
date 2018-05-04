@@ -3,7 +3,6 @@ package config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import redis.clients.jedis.Jedis;
 import server.Constants;
 
 import java.io.*;
@@ -13,7 +12,6 @@ import static server.Constants.CONFIG_LOCATION;
 import static server.Constants.LOCALHOST;
 
 public class ServletConfigContext {
-    private static Jedis jedis = new Jedis(LOCALHOST);
 
     private ServletConfigContext(){}
     private static ArrayList<ServletConfig> servletConfigArrayList = new ArrayList<>();
@@ -34,7 +32,6 @@ public class ServletConfigContext {
             String completeConfigContent = stringBuilder.toString();
             JSONObject jsonObject = JSON.parseObject(completeConfigContent);
             JSONArray jsonArray = (JSONArray) jsonObject.get("servlet");
-            jedis.set("servletJsonArray", String.valueOf(jsonArray));
             //System.out.println(jsonArray);
             for(int i=0;i<jsonArray.size();i++){
                 ServletConfig servletConfig = new ServletConfig();
@@ -50,20 +47,5 @@ public class ServletConfigContext {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void printAll(){
-        for(int i=0;i<servletConfigArrayList.size();i++){
-            System.out.println(servletConfigArrayList.get(i).getName());
-            System.out.println(servletConfigArrayList.get(i).getClassName());
-            System.out.println(servletConfigArrayList.get(i).getMappingUri());
-        }
-    }
-
-    public static void main(String[] args) {
-        ServletConfigContext servletConfigContext = new ServletConfigContext();
-        servletConfigContext.init();
-        System.out.println(jedis.get("servletJsonArray"));
-        //servletConfigContext.printAll();
     }
 }
